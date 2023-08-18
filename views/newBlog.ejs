@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin | <%= title %> </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.tiny.cloud/1/uc2ngaupy548pfq7dtnrg4ng1zoa99vio1r2kzzhhlxpzejc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <nav class="navBar">
+        <div>
+            <h1 class="create">
+                Create a new blog
+            </h1>    
+        </div>  
+        <div>
+            <%- include('./partials/nav.ejs') %>
+        </div>   
+    </nav>
+    <div>
+        <form action="/blogs" method="POST">
+            <label for="title">Blog title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="snippet">Blog Snippet:</label>
+            <input type="text" id="snippet" name="snippet" required>
+            <label for="Image">Input image link:</label>
+            <input type="text" id="image" name="image">
+            <label for="body">Body:</label>
+            <br>
+            <textarea name="body" id="body"></textarea>
+            <br>
+            <div>
+                <button>Submit</button>
+                <button><a href="/blogs">Cancel</a></button>
+            </div>
+        </form>
+         
+    </div>
+    <%- include('./partials/footer.ejs') %>
+    <script>
+
+</script>
+</body>
+</html>
