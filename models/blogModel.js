@@ -17,16 +17,20 @@ const devSchema = new Schema({
     image: {
         type: String,
         required: true
-    },Hashtags: {
+    },categories: {
         type: String,
         required: true
-    },Tags: {
+    },
+    hashtags: {
+        type: String,
+        required: true
+    },tags: {
         type: [String],
         required: true
-    },Author: {
+    },author: {
         type: String,
         required: true
-    },ReadMins: {
+    },readMins: {
         type: String,
         required: true
     },
