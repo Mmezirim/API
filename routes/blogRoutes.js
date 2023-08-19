@@ -20,7 +20,16 @@ route.get('/blogs', (req, res) =>{
         console.log(err);
     })
 })
-
+route.post('/blogs', (req, res) =>{
+    const blog = new Blog(req.body);
+    blog.save()
+    .then((result) =>{
+        res.redirect('/blogs');
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+});
 route.get('/blogs/:id',(req, res) => {
     const id = req.params.id;
     Blog.findById(id)
