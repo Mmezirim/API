@@ -1,0 +1,146 @@
+body{
+    max-width: 1200px;
+    margin: 20px auto;
+}
+.top-header{
+    background-color: rgb(28, 56, 218);
+    display: flex;
+    justify-content: space-around;
+    padding: 2em 0em;
+    margin-top: 0px;
+}
+.top-header li a:hover{
+    text-decoration: underline 4px;
+}
+.top-header li a{
+    color: white;
+    font-weight: bold;
+}
+.sub-buttons{
+    border-radius: 5px;
+    background-color: rgb(28, 56, 218);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.sub-buttons:hover{
+    opacity: 0.8;
+}
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.navBar ul{
+    display: flex;
+    justify-content: space-around;
+}
+.allNavs li{
+    padding: 10%;
+    font-weight: bolder;
+}
+li:hover{
+    text-decoration: underline 0.1em black;
+}
+li, a{
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}
+.fa{
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 2em;
+    margin: 0 4px;
+    padding: 1em;
+}
+.fa:hover{
+    opacity: 0.5;
+}
+.fa-whatsapp{
+    background-color: green;
+    color: white;
+    padding: 2px 4px;
+}
+.fa-facebook{
+    background-color: rgb(45, 116, 232);
+    color: white;
+    padding: 2px 6px;
+    margin-top: 1em;
+}
+.fa-twitter{
+    background-color: rgb(45, 116, 232);
+    color: white;
+    padding: 2px 4px;
+}
+form{
+    max-width: 600px;
+    margin: 0 auto;
+}
+input, textarea{
+    display: block;
+    width:90%;
+    margin: 2em 0;
+    padding: 2em;
+    border: 0.2em solid rgb(214, 213, 213);
+    border-radius: 0.7em;
+}
+textarea{
+    height: 10em;
+}
+.comment{
+    display: flex;
+    justify-content: left;
+}
+.summary{
+    display: block;
+    margin: 1em 0;
+    padding-left: 4em;
+    border: 1px solid rgb(91, 91, 91);
+    box-shadow: 1px, 2px, 3px;
+    border-radius: 0.2em;
+}
+.summary:hover{
+    color: rgb(146, 146, 150);
+}
+.date{
+    font-size: x-small;
+    color: rgb(181, 181, 181);
+}
+.details{
+    position: relative;
+}
+.blog{
+    width: 200px;
+}
+.all-blogs, .comments{
+    border-radius: 1em;
+    background-color: rgb(252, 252, 255);
+    padding: 0.5em 2em;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+.all-blogs:hover{
+    background-color: rgb(240, 240, 240);
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+.delete{
+    position: absolute;
+    border-radius: 1em;
+    background-color: rgb(28, 56, 218);
+    padding: 0.5em 2em;
+    color: white;
+    cursor: pointer;
+}
+.delete:hover{
+    background-color: rgb(68, 68, 122);
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+.create{
+    font-size: 2em;
+}
+footer{
+    color: rgb(195, 193, 193);
+    font-weight: bolder;
+    transform: translateY(1000%);
+}
