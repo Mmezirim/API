@@ -10,10 +10,7 @@ const devSchema = new Schema({
         type: String,
         required: true
     },
-    body: {
-        type: String,
-        required: true,
-    },
+    body: mongoose.Schema.Types.Mixed,
     image: {
         type: String,
         required: true
