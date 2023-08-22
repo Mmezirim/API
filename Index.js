@@ -7,6 +7,7 @@ const Blog = require('./models/blogModel');
 const BlogRoutes = require('./routes/blogRoutes');
 const AuthRoutes = require('./routes/DashAuth');
 const UserRoutes = require('./routes/Users');
+const bodyParser = require('body-parser');
 const app = express(); 
 
 // static requests
@@ -18,6 +19,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
 app.use(BlogRoutes);
 app.use(AuthRoutes);
 app.use(UserRoutes);
