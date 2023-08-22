@@ -7,9 +7,9 @@ route.get('/blogs/create', (req,res)=>{
     res.render('newBlog', {title: 'Create a new blog'});
 }); 
 route.post('/api/blogs', (req, res) =>{
-     { title, snippet, image, tags, readMins, hashtags, author, categories, body} = req.body;
+const { title, snippet, image, tags, readMins, hashtags, author, categories, body} = req.body;
 
-  const newData = new Data({
+  const blog = new Blog({
     title, snippet, image, tags, readMins, hashtags, author, categories, body
   });
     blog.save()
