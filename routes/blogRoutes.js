@@ -7,19 +7,16 @@ route.get('/blogs/create', (req,res)=>{
     res.render('newBlog', {title: 'Create a new blog'});
 }); 
 route.post('/api/blogs', (req, res) =>{
-const { title, snippet, image, tags, readMins, hashtags, author, categories, body} = req.body;
-
-  const blog = new Blog({
-    title, snippet, image, tags, readMins, hashtags, author, categories, body
-  });
+    const blog = new Blog(req.body);
     blog.save()
-       .then(() => {
-      res.status(200).json({ message: 'Data saved successfully' });
+    .then(() =>{
+        res.status(200).json({message: 'Data saved sucessfully'});
     })
-    .catch((error) => {
-      res.status(500).json({ message: 'Error saving data' });
-    });
+    .catch((err) => {
+        res.status(500).json({message: 'Error saving data'});
+    })
 });
+
 
 route.get('/blogs', (req, res) =>{
     Blog.find().sort({createdAt: -1})
