@@ -4,20 +4,20 @@ const Schema = mongoose.Schema;
 const devSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: false
     },
     snippet:{
         type: String,
-        required: true
+        required: false
     },
     body: mongoose.Schema.Types.Mixed,
     image: {
         type: String,
-        required: true
+        required: false
     },
     hashtags: {
         type: String,
-        required: true
+        required: false
     },
     tags: {
         type: [String],
@@ -25,13 +25,13 @@ const devSchema = new Schema({
     },
     author: {
         type: String,
-        required: true
+        required: false
     },readMins: {
         type: String,
-        required: true
+        required: false
     },categories: {
         type: String,
-        required: true
+        required: false
     },
 
     comments:[
