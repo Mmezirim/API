@@ -4,7 +4,7 @@ const Blog = require('../models/blogModel');
 const { json } = require('body-parser');
 
 route.get('/blogs/create', (req,res)=>{
-    res.render('newBlog', {title: 'Create a new blog'});
+    res.status(200).json({title: 'Create a new blog'});
 }); 
 route.post('/blogs', (req, res) =>{
     const blog = new Blog(req.body);
