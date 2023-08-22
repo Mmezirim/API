@@ -7,11 +7,23 @@ route.get('/blogs/create', (req,res)=>{
     res.render('newBlog', {title: 'Create a new blog'});
 }); 
 route.post('/api/blogs', (req, res) =>{
-    const blog = new Blog(req.body);
+    const blog = new Blog(
+        {
+        title: req.body.title,
+        snippet: req.body.snippet,
+        image: req.body.image,
+        hashtags: req.body.hashtags,
+        tag: req.body.tag,
+        author: req.body.author,
+        categories: req.body.categories,
+        readMins: req.body.readMins,
+        body: req.body.body,
+    }
+    );
     blog.save()
     .then((result) =>{
-        res.redirect('/blogs');
-    })
+        res.status(200).json({message: 'Blog saved successfully'})
+    });
     .catch((err) => {
         console.log(err);
     })
