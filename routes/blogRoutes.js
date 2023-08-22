@@ -19,12 +19,11 @@ route.post('/api/blogs', (req, res) =>{
         body: req.body.body,
     });
     blog.save()
-    .then((result) =>{
-        res.redirect('/blogs');
+       .then(() => {
+      res.status(200).json({ message: 'Data saved successfully' });
     })
-    .catch((err) => {
-        console.log(err);
-    })
+    .catch((error) => {
+      res.status(500).json({ message: 'Error saving data' });
 });
 
 route.get('/blogs', (req, res) =>{
