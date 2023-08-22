@@ -12,7 +12,6 @@ const devSchema = new Schema({
   readMins: String,
   categories: String,
   comments: [{ commenter: String, text: String }],
-});
     createdAt: {
         type: Date,
         default: Date.now
