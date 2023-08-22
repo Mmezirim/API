@@ -1,7 +1,7 @@
 const express = require('express');
 const route = express.Router();
 const Blog = require('../models/blogModel');
-const { json } = require('body-parser');
+const bodyParser = require('body-parser');
 
 route.get('/blogs/create', (req,res)=>{
     res.render('newBlog', {title: 'Create a new blog'});
