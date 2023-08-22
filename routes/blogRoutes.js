@@ -24,6 +24,7 @@ route.post('/api/blogs', (req, res) =>{
     })
     .catch((error) => {
       res.status(500).json({ message: 'Error saving data' });
+    });
 });
 
 route.get('/blogs', (req, res) =>{
