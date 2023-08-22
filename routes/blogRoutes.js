@@ -6,7 +6,7 @@ const { json } = require('body-parser');
 route.get('/blogs/create', (req,res)=>{
     res.render('newBlog', {title: 'Create a new blog'});
 }); 
-route.post('/blogs', (req, res) =>{
+route.post('/api/blogs', (req, res) =>{
     const blog = new Blog(req.body);
     blog.save()
     .then((result) =>{
