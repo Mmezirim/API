@@ -12,6 +12,16 @@ const UserSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    linkedInId:{
+        type: String,
+        required: true,
+        unique: true
+    },
+    twitterId:{
+        type: String,
+        required: true,
+        unique: true
+    },
     password: {
         type: String,
         required: true
