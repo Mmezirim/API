@@ -17,7 +17,7 @@ route.post('/api/blogs', (req, res) =>{
     })
 });
 
-app.put('/api/blogs/:id', async (req, res) => {
+route.put('/api/blogs/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { content } = req.body;
