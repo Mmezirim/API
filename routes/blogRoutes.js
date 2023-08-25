@@ -17,6 +17,28 @@ route.post('/api/blogs', (req, res) =>{
     })
 });
 
+app.put('/api/blogs/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { content } = req.body;
+
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      id,
+      { $set: { content } }, 
+      { new: true }
+    );
+
+    if (!updatedBlog) {
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+
+    res.status(200).json(updatedBlog);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 
 route.get('/blogs', (req, res) =>{
     Blog.find().sort({createdAt: -1})
