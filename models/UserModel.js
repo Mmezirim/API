@@ -30,6 +30,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         default: ""
     },
+    access: String,
 },{Timestamps: true});
 
 const User = mongoose.model('User', UserSchema);
