@@ -37,7 +37,18 @@ route.get('/admin_dashboard/:id',(req, res) => {
         res.status(500).json('error');
     });
 })
- 
+
+route.get('/admin_dashboard/users', (req, res) =>{
+    User.find()
+    .then((result) =>{
+        res.status(200).json({
+            users:result
+        });
+    }).catch((err) => {
+        res.status(500).json('error');
+    });
+})
+
 route.delete('/admin_dashboard/:id', async(req, res)=>{
     if(req.body.userId === req.params.id){
         try{
