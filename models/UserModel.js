@@ -26,11 +26,14 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    access: {
+        type: String,
+        unique: true
+    },
     profilePic: {
         type: String,
         default: ""
     },
-    access: String,
 },{Timestamps: true});
 
 const User = mongoose.model('User', UserSchema);
