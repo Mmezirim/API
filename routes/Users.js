@@ -38,17 +38,6 @@ route.get('/admin_dashboard/:id',(req, res) => {
     });
 })
 
-route.get('/admin_dashboard/users', (req, res) =>{
-    User.find().sort({createdAt: -1})
-    .then((result) =>{
-        res.status(200).json({
-            users:result
-        });
-    }).catch((err) => {
-        console.log(err);
-    })
-})
-
 route.delete('/admin_dashboard/:id', async(req, res)=>{
     if(req.body.userId === req.params.id){
         try{
