@@ -39,14 +39,14 @@ route.get('/admin_dashboard/:id',(req, res) => {
 })
 
 route.get('/admin_dashboard/users', (req, res) =>{
-    User.find()
+    User.find().sort({createdAt: -1})
     .then((result) =>{
         res.status(200).json({
             users:result
         });
     }).catch((err) => {
-        res.status(500).json('error');
-    });
+        console.log(err);
+    })
 })
 
 route.delete('/admin_dashboard/:id', async(req, res)=>{
