@@ -18,25 +18,24 @@ route.post('/api/blogs', (req, res) =>{
 });
 
 route.put('/api/blogs/:id', async (req, res) => {
-  try {
-    const {id}  = req.params;
-    const {content} = req.body;
-
-    const updatedBlog = await Blog.findByIdAndUpdate(
-      id,
-        { $set:{content} },
-      { new: true }
-    );
-
-    if (!updatedBlog) {
-      return res.status(404).json({ message: 'Blog not found' });
-    }
-
-    res.status(200).json(updatedBlog);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error' });
-  }
+  try{
+     const blog = await Blog.findById(req.params.id);
+     if(blog.username === req.body.username){
+      try{
+      const updatedBlog = await Blog.findByIdAndUpdate(req.params.id,
+      {$set: req.body},
+      {new: true}
+       };
+       res.status(200).json(updatedBlog);
+    }catch(err){
+      res.status(200).json(err)
+     }
+    } else{
+      res.status(200).json('You can only update your blog')
+      }
+}catch(err){
+      res.status(200).json(err)
+}
 });
 
 
