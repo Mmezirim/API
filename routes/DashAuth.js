@@ -14,9 +14,9 @@ route.post('/register', async(req, res)=>{
             email: req.body.email,
             linkedInId: req.body.linkedInId,
             twitterId: req.body.twitterId,
-            access: req.body.access,
             password: passFilter,
-        });
+            access: req.body.access
+            });
         const user = await newUser.save();
         res.status(200).json(user);
     }catch(err){
