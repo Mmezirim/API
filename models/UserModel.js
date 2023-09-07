@@ -30,6 +30,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         unique: true
     },
+    description: String,
     profilePic: {
         type: String,
         default: ""
