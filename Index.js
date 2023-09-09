@@ -6,6 +6,7 @@ const User = require('./models/UserModel');
 const Blog = require('./models/blogModel');
 const BlogRoutes = require('./routes/blogRoutes');
 const AuthRoutes = require('./routes/DashAuth');
+const MailRoutes = require('./routes/subscribeToNewsLetter');
 const UserRoutes = require('./routes/Users');
 const bodyParser = require('body-parser');
 const app = express(); 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(BlogRoutes);
 app.use(AuthRoutes);
+app.use(MailRoutes);
 app.use(UserRoutes);
 
 //GET and POST requests
