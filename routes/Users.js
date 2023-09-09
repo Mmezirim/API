@@ -24,28 +24,16 @@ route.put('/admin_dashboard/:id', async(req, res)=>{
     }
     
 });
-
-
-route.put('/admin_dashboard/:id', async(req, res)=>{
-    if(req.body.userId === req.params.id){
-        if(req.body.password){
-            const salt = await bcrypt.genSalt(10);
-            req.body.password = await bcrypt.hash(req.body.password, salt)
-        }
-        try{
-            const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, {
-                $set: req.body,
-            },{new:true});
-            res.status(200).json(updatedBlog);
-        }catch(err){
-            res.status(500).json(err);
-        }
-    }else{
-        res.status(401).json('You can only update your blog')
-    }
-    
+route.get('/admin_dashboard/users', (req, res) =>{
+    User.find().sort({createdAt: -1})
+    .then((result) =>{
+        res.status(200).json({
+            users:result
+        });
+    }).catch((err) => {
+        console.log(err);
+    })
 });
-
 
 route.get('/admin_dashboard/:id',(req, res) => {
     
@@ -59,7 +47,7 @@ route.get('/admin_dashboard/:id',(req, res) => {
         res.status(500).json('error');
     });
 })
- 
+
 route.delete('/admin_dashboard/:id', async(req, res)=>{
     if(req.body.userId === req.params.id){
         try{
