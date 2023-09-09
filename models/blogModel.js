@@ -2,21 +2,44 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const devSchema = new Schema({
-  title: String,
-  snippet: String,
-  body: mongoose.Schema.Types.Mixed,
-  image: String,
-  hashtags: String,
-  tagOne: String,
-  tagTwo: String,
-  tagThree: String,
-  tagFour: String,
-  tagFive: String,
-  tagSix: String,
-  author: String,
-  readMins: String,
-  categories: String,
-  comments: [{ commenter: String, text: String }],
+    title: {
+        type: String,
+        required: true
+    },
+    snippet:{
+        type: String,
+        required: true
+    },
+    body: mongoose.Schema.Types.Mixed,
+    image: {
+        type: String,
+        required: true
+    },
+    hashtags: {
+        type: String,
+        required: true
+    },
+    tags: {
+        type: [String],
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },readMins: {
+        type: String,
+        required: true
+    },categories: {
+        type: String,
+        required: true
+    },
+
+    comments:[
+        {
+            commenter: String,
+            text: String
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now
