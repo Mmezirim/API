@@ -1,5 +1,6 @@
 const express = require('express');
 const route = express.Router();
+const Blog = require('../models/blogModel');
 const bodyParser = require('body-parser');
 
 route.get('/blogs/create', (req,res)=>{
@@ -15,6 +16,28 @@ route.post('/api/blogs', (req, res) =>{
         res.status(500).json({message: 'Error saving data'});
     })
 });
+
+route.put('/api/blogs/:id', async (req, res) => {
+  try{
+     const blog = await Blog.findById(req.params.id);
+     if(blog.username === req.body.username){
+      try{
+      const updatedBlog = await Blog.findByIdAndUpdate(req.params.id,
+      {$set: req.body},
+      {new: true}
+       );
+       res.status(200).json(updatedBlog);
+    }catch(err){
+      res.status(200).json(err)
+     }
+    } else{
+      res.status(401).json('You can only update your blog');
+      }
+}catch(err){
+      res.status(500).json(err)
+}
+});
+
 
 route.get('/blogs', (req, res) =>{
     Blog.find().sort({createdAt: -1})
@@ -74,7 +97,7 @@ route.delete('/blogs/:id', (req, res) => {
         res.json({redirect: '/blogs'});
     })
     .catch((err) => {
-        console.log(err);
+        concoler.log(err);
     })
 });
 
