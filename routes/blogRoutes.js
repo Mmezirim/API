@@ -7,7 +7,8 @@ route.get('/blogs/create', (req,res)=>{
     res.render('newBlog', {title: 'Create a new blog'});
 }); 
 route.post('/api/blogs', (req, res) =>{
-    const blog = new Blog(req.body);
+    const { title, snippet, body, image, hashtags, tagOne, tagTwo, tagThree, tagFour, tagFive, tagSix, author, readMins, categories, comments} = req.body;
+    const blog = new Blog({ title, snippet, body, image, hashtags, tagOne, tagTwo, tagThree, tagFour, tagFive, tagSix, author, readMins, categories, comments});
     blog.save()
     .then(() =>{
         res.status(200).json({message: 'Data saved sucessfully'});
