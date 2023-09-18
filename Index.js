@@ -9,6 +9,7 @@ const Mail = require('./models/newsletters');
 const BlogRoutes = require('./routes/blogRoutes');
 const AuthRoutes = require('./routes/DashAuth');
 const MailRoutes = require('./routes/subscribeToNewsLetter');
+const VideoRoute = require('./routes/youtubeVideos');
 const UserRoutes = require('./routes/Users');
 const bodyParser = require('body-parser');
 const app = express(); 
@@ -27,6 +28,7 @@ app.use(BlogRoutes);
 app.use(AuthRoutes);
 app.use(MailRoutes);
 app.use(UserRoutes);
+app.use(VideoRoute);
 
 //GET and POST requests
 
