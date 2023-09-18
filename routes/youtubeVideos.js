@@ -23,22 +23,16 @@ route.get('/api/all_videos', (req, res) => {
     })
 })
 
-
-route.delete('/api/newsletter/:id/:property', async (req, res) => {
-    try {
-      const { id, property } = req.params;
-      const mail = await Mail.findById(id);
-      if (!mail) {
-        return res.status(404).json({ message: 'Property not found' });
-      }
-      mail[property] = undefined;
-      await mail.save();
-  
-      return res.json({ message: `${property} removed from user` });
-    } catch (error) {
-      return res.status(500).json({ message: 'Internal Server Error' });
-    }
-  });
+route.delete('/api/videos/:id', (req, res) => {
+    const id = req.params.id;
+    VideoLinks.findByIdAndDelete(id)
+    .then((result) => {
+        res.json({redirect: '/api/all_videos'});
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+});
   
 
 module.exports = route;
