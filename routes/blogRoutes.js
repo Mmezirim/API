@@ -98,7 +98,7 @@ route.delete('/blogs/:id', (req, res) => {
         res.json({redirect: '/blogs'});
     })
     .catch((err) => {
-        concoler.log(err);
+        console.log(err);
     })
 });
 
