@@ -1,0 +1,3 @@
+
+    videoLink: String,
+    title: String,
