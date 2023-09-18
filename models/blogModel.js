@@ -5,7 +5,7 @@ const devSchema = new Schema({
   title: String,
   snippet: String,
   body: mongoose.Schema.Types.Mixed,
-  image: Buffer,
+  image: String,
   hashtags: String,
   tagOne: String,
   tagTwo: String,
