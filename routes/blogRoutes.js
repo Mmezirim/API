@@ -63,14 +63,14 @@ route.get('/blogs/:id',(req, res) => {
 })
 route.post('/blogs/:id/comments', async (req, res) => {
     const blogId = req.params.id;
-    const {commenter, text} = req.body;
+    const comment = req.body.comments;
 
     try{
         const blog = await Blog.findById(blogId);
         if(!blog){
             return res.status(404).json({error: 'Blog post was not found'})
         }
-        blog.comments.push({commenter, text});
+        blog.comments.push(comment);
         await blog.save();
         res.status(200).json(blog)
     }
