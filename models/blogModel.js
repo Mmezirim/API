@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const commentSchema = new Schema({
+    commenter: String,
+    text: String
+});
 const devSchema = new Schema({
   title: String,
   snippet: String,
@@ -16,7 +19,7 @@ const devSchema = new Schema({
   author: String,
   readMins: String,
   categories: String,
-  comments: [{ commenter: String, text: String }],
+  comments:[commentSchema],
     createdAt: {
         type: Date,
         default: Date.now
