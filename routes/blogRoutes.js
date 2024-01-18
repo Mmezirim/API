@@ -91,6 +91,29 @@ route.get('/blogs/:id/comments', async (req,res)=>{
         res.status(500).json({error:'internal server error'});
     }
 });
+
+route.get('/blogs/:blogId/comments/:commentId/replies', async (req, res) => {
+  try {
+    const { blogId, commentId } = req.params;
+    const blog = await Blog.findById(blogId);
+
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+
+    const comment = blog.comments.id(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ error: 'Comment not found' });
+    }
+
+    const replies = comment.replies;
+    res.status(200).json(replies);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 route.delete('/blogs/:id', (req, res) => {
     const id = req.params.id;
     Blog.findByIdAndDelete(id)
