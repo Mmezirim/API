@@ -92,6 +92,35 @@ route.get('/blogs/:id/comments', async (req,res)=>{
     }
 });
 
+// Assuming you have Express and other necessary imports set up
+app.post('/blogs/:blogId/comments/:commentId/reply', async (req, res) => {
+  try {
+    const { blogId, commentId } = req.params;
+    const blog = await Blog.findById(blogId);
+
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+
+    const comment = blog.comments.id(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ error: 'Comment not found' });
+    }
+
+    comment.replies.push({
+      replier: req.body.replier,
+      text: req.body.text,
+    });
+
+    await blog.save();
+    res.status(201).json(blog);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 route.get('/blogs/:blogId/comments/:commentId/replies', async (req, res) => {
   try {
     const { blogId, commentId } = req.params;
