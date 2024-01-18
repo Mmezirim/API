@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const commentSchema = new Schema({
     commenter: String,
-    text: String
+    text: String,
+    replies: [{
+        replier: String,
+        text: String }],
 });
 const devSchema = new Schema({
   title: String,
