@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const commentSchema = new Schema({
-    commenter: String,
-    text: String,
-    replies: [{
-        replier: String,
-        text: String }],
+
+const replySchema = new Schema({
+  replier: String,
+  text: String,
 });
+
+const commentSchema = new Schema({
+  commenter: String,
+  text: String,
+  replies: [replySchema],
+});
+
 const devSchema = new Schema({
   title: String,
   snippet: String,
