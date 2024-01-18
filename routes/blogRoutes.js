@@ -92,8 +92,7 @@ route.get('/blogs/:id/comments', async (req,res)=>{
     }
 });
 
-// Assuming you have Express and other necessary imports set up
-app.post('/blogs/:blogId/comments/:commentId/reply', async (req, res) => {
+route.post('/blogs/:blogId/comments/:commentId/reply', async (req, res) => {
   try {
     const { blogId, commentId } = req.params;
     const blog = await Blog.findById(blogId);
