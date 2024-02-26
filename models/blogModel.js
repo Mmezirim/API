@@ -4,12 +4,20 @@ const Schema = mongoose.Schema;
 const replySchema = new Schema({
   replier: String,
   text: String,
+  createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const commentSchema = new Schema({
   commenter: String,
   text: String,
   replies: [replySchema],
+  createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const devSchema = new Schema({
